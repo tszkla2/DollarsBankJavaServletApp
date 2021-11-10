@@ -48,6 +48,31 @@ public class BankServlet extends HttpServlet{
 	        case "/login":
 	        	goToLoginPage(request, response);
 	            break;
+	        case "/loggedIn":
+	        	goToLogggedInPage(request, response);
+	            break;
+            case "/trylogin":
+                handleLogin(request, response);
+                break;
+            case "/listHistory":
+                listHIstory(request, response);
+                break;
+            case "/deposit":
+                deposit(request, response);
+                break;
+            case "/withdraw":
+                withdraw(request, response);
+                break;
+            case "/transfer":
+                transfer(request, response);
+                break;
+            case "/information":
+                information(request, response);
+                break;
+                
+            case "/logout":
+            	response.sendRedirect("/DollarsBankJavaServletApp");
+            	break;    
 	        default:
                 response.sendRedirect("/");
                 break;

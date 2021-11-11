@@ -71,7 +71,8 @@ public class SavingsAccount extends Account {
 
 	//Add actions to the history and only displays the 5 most recent
 	@Override
-	public void displayHistory() {
+	public ArrayList<String> displayHistory() {
+		ArrayList<String> h = new ArrayList<String>();
 		int size = transactionHistory.size();
 		int skip = 0;
 		
@@ -82,11 +83,11 @@ public class SavingsAccount extends Account {
 		for (String string : transactionHistory) {
 			if(skip > 0) {
 				skip = skip - 1;
+				h.add(string);
 				continue;
 			}
-			System.out.println(string);
 		}
-		
+		return h;
 	}
 
 	//Transfer functionality that displays transfer and time as well as adds it to the history

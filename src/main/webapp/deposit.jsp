@@ -54,7 +54,7 @@
 		
 <div class="container">
 <% String formType = "handleDeposit"; %>
-	
+
 <form action="<%= formType %>" method="get">
 	  <div class="form-group">
 	    

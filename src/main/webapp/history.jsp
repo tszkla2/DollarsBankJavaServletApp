@@ -1,4 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
+<%@page import="com.dollarsbank.model.Customer"%>
 
 <html lang="en">
   <head>
@@ -43,9 +46,6 @@
 						   
 						<a class="nav-link" 
 						   href="<%= request.getContextPath() %>/information">Information</a>
-						   
-						    
-					
 					</div>
 				</div>
 				
@@ -55,7 +55,10 @@
 <div class="container">
 	
 	<h1>History</h1>
-
+		<c:forEach items="${transactionHistory}" var="item">
+    		${item}
+    		<br>
+		</c:forEach>
 </div>
 		
 		

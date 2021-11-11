@@ -28,7 +28,7 @@ public class BankServlet extends HttpServlet{
 		list.add(new Customer("Joe", "789 Drive", "000-111-2345", "003", "password", 345));
 	}
 	
-	public int index;
+	public int index = -1;
 		
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 	            throws ServletException, IOException {
@@ -40,9 +40,6 @@ public class BankServlet extends HttpServlet{
 		String action = request.getServletPath();
 
         switch (action) {
-//        	case "/createAccount":
-//	            createAccount(request, response);
-//	            break;
 	        case "/login":
 	        	goToLoginPage(request, response);
 	            break;
@@ -70,7 +67,9 @@ public class BankServlet extends HttpServlet{
             case "/handleWithdraw":
                 handleWithdraw(request, response);
                 break;
-                
+            case "/handleTransfer":
+                handleTransfer(request, response);
+                break;    
             case "/logout":
             	response.sendRedirect("/DollarsBankJavaServletApp");
             	break;    
@@ -91,22 +90,17 @@ public class BankServlet extends HttpServlet{
 	 public void handleLogin(HttpServletRequest request, HttpServletResponse response) 
 				throws ServletException, IOException {
 		
-		String accountID = request.getParameter("accountID");
-		String password = request.getParameter("password");
+		String accID = request.getParameter("accountID");
+		String pass = request.getParameter("password");
 		
 		for (Customer customer : list) {
-				if (customer.getAccountID().equals(accountID) && customer.getPassword().equals(password)) {
+				if (customer.getAccountID().equals(accID) && customer.getPassword().equals(pass)) {
 					index = list.indexOf(customer);
 					request.setAttribute("customer", customer);
 					RequestDispatcher dispatcher = request.getRequestDispatcher("logged_in.jsp");
 					dispatcher.forward(request, response);
 					break;
 				}
-				else {
-					RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
-					dispatcher.forward(request, response);
-				}
-				
 			}
 	 }
 	 
@@ -140,6 +134,32 @@ public class BankServlet extends HttpServlet{
 			}
 	 }
 	 
+	 public void handleTransfer(HttpServletRequest request, HttpServletResponse response) 
+				throws ServletException, IOException {
+			
+			String transferAmount = request.getParameter("transfer");
+			double money = Double.parseDouble(transferAmount);
+			String transferID = request.getParameter("transferID");
+			
+			for (Customer customer : list)
+			{
+				if(customer.getAccountID().contentEquals(transferID))
+				{
+					int t = list.indexOf(customer);
+					if(money >= 0 && money <= list.get(index).getBalance())
+					{
+						list.get(index).transfer(money, list.get(t).getAccountID());
+						list.get(t).deposit(money);
+						response.sendRedirect("information");
+					}
+					else
+					{
+						response.sendRedirect("transfer");
+					}
+				}
+			}
+
+	 }
 	 
 	 public void information(HttpServletRequest request, HttpServletResponse response) 
 				throws ServletException, IOException {
@@ -176,8 +196,8 @@ public class BankServlet extends HttpServlet{
 	 
 	 public void goToHistory(HttpServletRequest request, HttpServletResponse response) 
 				throws ServletException, IOException {
-		 
-//		 	request.setAttribute("transactionHistory", list.get(index).displayHistory(););
+		 	
+		 	request.setAttribute("transactionHistory", list.get(index).displayHistory());
 			RequestDispatcher dispatcher = request.getRequestDispatcher("history.jsp");
 			
 			dispatcher.forward(request, response);

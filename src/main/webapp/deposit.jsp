@@ -53,13 +53,13 @@
 		</nav>
 		
 <div class="container">
-<% String formType = "deposit"; %>
+<% String formType = "handleDeposit"; %>
 	
 <form action="<%= formType %>" method="get">
 	  <div class="form-group">
 	    
 	    <label for="deposit">How much money would you like to deposit?</label>
-	    <input type="text" class="form-control" id="deposit" name="deposit" required>
+	    <input type="number" class="form-control" id="deposit" name="deposit" required>
 	    
 	  </div>
 	  

@@ -53,13 +53,13 @@
 		</nav>
 		
 <div class="container">
-<% String formType = "withdraw"; %>
+<% String formType = "handleWithdraw"; %>
 	
 <form action="<%= formType %>" method="get">
 	  <div class="form-group">
 	    
 	    <label for="withdraw">How much money would you like to withdraw?</label>
-	    <input type="text" class="form-control" id="withdraw" name="withdraw" required>
+	    <input type="number" class="form-control" id="withdraw" name="withdraw" required>
 	    
 	  </div>
 	  

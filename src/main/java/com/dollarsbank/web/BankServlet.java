@@ -24,7 +24,8 @@ public class BankServlet extends HttpServlet{
 	//Adds initial accounts to the system
 	static {
 		list.add(new Customer("Tom", "123 Drive", "123-456-7890", "001", "password", 500));
-//		list.add(new Customer("Bill", "456 Drive", "987-654-3210", "002", "password", 100));
+		list.add(new Customer("Bill", "456 Drive", "987-654-3210", "002", "password", 100));
+		list.add(new Customer("Joe", "789 Drive", "000-111-2345", "003", "password", 345));
 	}
 	
 	public int index;
@@ -62,6 +63,12 @@ public class BankServlet extends HttpServlet{
                 break;
             case "/information":
                 information(request, response);
+                break;
+            case "/handleDeposit":
+                handleDeposit(request, response);
+                break;
+            case "/handleWithdraw":
+                handleWithdraw(request, response);
                 break;
                 
             case "/logout":
@@ -102,6 +109,37 @@ public class BankServlet extends HttpServlet{
 				
 			}
 	 }
+	 
+	 public void handleDeposit(HttpServletRequest request, HttpServletResponse response) 
+				throws ServletException, IOException {
+			
+			String depositAmount = request.getParameter("deposit");
+			double money = Double.parseDouble(depositAmount);
+			
+			if(money >= 0) {
+				list.get(index).deposit(money);
+				response.sendRedirect("information");
+			}
+			else {
+				response.sendRedirect("deposit");
+			}
+	 }
+	 
+	 public void handleWithdraw(HttpServletRequest request, HttpServletResponse response) 
+				throws ServletException, IOException {
+			
+			String withdrawAmount = request.getParameter("withdraw");
+			double money = Double.parseDouble(withdrawAmount);
+			
+			if(money >= 0 && money <= list.get(index).getBalance()) {
+				list.get(index).withdraw(money);
+				response.sendRedirect("information");
+			}
+			else {
+				response.sendRedirect("withdraw");
+			}
+	 }
+	 
 	 
 	 public void information(HttpServletRequest request, HttpServletResponse response) 
 				throws ServletException, IOException {

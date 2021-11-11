@@ -52,5 +52,14 @@
 			</div>
 		</nav>
 		
+<div class="container">
+	
+	<h1>History</h1>
+
+</div>
+		
+		
   </body>
 </html>
+
+<%@ include file="footer.jsp" %>

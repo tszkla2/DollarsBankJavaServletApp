@@ -52,5 +52,24 @@
 			</div>
 		</nav>
 		
+<div class="container">
+<% String formType = "deposit"; %>
+	
+<form action="<%= formType %>" method="get">
+	  <div class="form-group">
+	    
+	    <label for="deposit">How much money would you like to deposit?</label>
+	    <input type="text" class="form-control" id="deposit" name="deposit" required>
+	    
+	  </div>
+	  
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+</div>
+		
+		
   </body>
 </html>
+
+<%@ include file="footer.jsp" %>

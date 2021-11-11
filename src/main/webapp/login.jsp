@@ -17,7 +17,7 @@
 	
 	<h1>Login!</h1>
 	
-<form action="<%= formType %>" method="post">
+<form action="<%= formType %>" method="get">
   <div class="mb-3">
     <label for="accountID">AccountID:</label>
     <input type="text" class="form-control" id="accountID" name="accountID" required>

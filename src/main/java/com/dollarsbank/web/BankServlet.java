@@ -48,21 +48,21 @@ public class BankServlet extends HttpServlet{
             case "/trylogin":
                 handleLogin(request, response);
                 break;
-//            case "/listHistory":
-//                listHIstory(request, response);
-//                break;
-//            case "/deposit":
-//                deposit(request, response);
-//                break;
-//            case "/withdraw":
-//                withdraw(request, response);
-//                break;
-//            case "/transfer":
-//                transfer(request, response);
-//                break;
-//            case "/information":
-//                information(request, response);
-//                break;
+            case "/listHistory":
+                goToHistory(request, response);
+                break;
+            case "/deposit":
+                goToDeposit(request, response);
+                break;
+            case "/withdraw":
+                goToWithdraw(request, response);
+                break;
+            case "/transfer":
+                goToTransfer(request, response);
+                break;
+            case "/information":
+                information(request, response);
+                break;
                 
             case "/logout":
             	response.sendRedirect("/DollarsBankJavaServletApp");
@@ -72,15 +72,6 @@ public class BankServlet extends HttpServlet{
                 break;
 			}
 	}
-	
-	
-//	private void createAccount(HttpServletRequest request, HttpServletResponse response) 
-//			throws ServletException, IOException {
-//		
-//		RequestDispatcher dispatcher = request.getRequestDispatcher("createAccount.jsp");
-//		
-//		dispatcher.forward(request, response);
-//	}
 	
 	public void goToLoginPage(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
@@ -112,6 +103,45 @@ public class BankServlet extends HttpServlet{
 			}
 	 }
 	 
+	 public void information(HttpServletRequest request, HttpServletResponse response) 
+				throws ServletException, IOException {
+		 
+		request.setAttribute("customer", list.get(index));
+		RequestDispatcher dispatcher = request.getRequestDispatcher("info.jsp");
+			
+		dispatcher.forward(request, response);
+		}	 
+
+	 public void goToDeposit(HttpServletRequest request, HttpServletResponse response) 
+				throws ServletException, IOException {
+			
+			RequestDispatcher dispatcher = request.getRequestDispatcher("deposit.jsp");
+			
+			dispatcher.forward(request, response);
+	 }
 	 
+	 public void goToWithdraw(HttpServletRequest request, HttpServletResponse response) 
+				throws ServletException, IOException {
+			
+			RequestDispatcher dispatcher = request.getRequestDispatcher("withdraw.jsp");
+			
+			dispatcher.forward(request, response);
+	 }
 	 
+	 public void goToTransfer(HttpServletRequest request, HttpServletResponse response) 
+				throws ServletException, IOException {
+			
+			RequestDispatcher dispatcher = request.getRequestDispatcher("transfer.jsp");
+			
+			dispatcher.forward(request, response);
+	 }
+	 
+	 public void goToHistory(HttpServletRequest request, HttpServletResponse response) 
+				throws ServletException, IOException {
+		 
+//		 	request.setAttribute("transactionHistory", list.get(index).displayHistory(););
+			RequestDispatcher dispatcher = request.getRequestDispatcher("history.jsp");
+			
+			dispatcher.forward(request, response);
+		}	
 }

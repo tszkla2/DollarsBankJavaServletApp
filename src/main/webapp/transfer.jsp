@@ -52,5 +52,31 @@
 			</div>
 		</nav>
 		
+<div class="container">
+<% String formType = "transfer"; %>
+	
+<form action="<%= formType %>" method="get">
+	  <div class="form-group">
+	    
+	    <label for="transfer">How much money would you like to transfer?</label>
+	    <input type="text" class="form-control" id="transfer" name="transfer" required>
+	    
+	  </div>
+	  
+	  <div class="form-group">
+	    
+	    <label for="transferID">Which accountID would you like to transfer to?</label>
+	    <input type="text" class="form-control" id="transferID" name="transferID" required>
+	    
+	  </div>
+	  
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+</div>
+		
+		
   </body>
 </html>
+
+<%@ include file="footer.jsp" %>

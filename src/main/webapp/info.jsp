@@ -52,5 +52,26 @@
 			</div>
 		</nav>
 		
+<div class="container">
+	
+	<h1>Customer Information</h1>
+	<br>
+	<b>ACCOUNT ID: ${ customer.accountID }</b>
+	<br>
+ 	<b>PASSWORD: ${ customer.password }</b>
+ 	<br>
+ 	<b>BALANCE: \$${ customer.balance }</b>
+	<br>
+ 	<b>NAME: ${ customer.name }</b>
+ 	<br>
+ 	<b>ADDRESS: ${ customer.address }</b>
+ 	<br>
+ 	<b>PHONE: ${ customer.phoneNumber }</b>
+ 	<br>
+</div>
+		
+		
   </body>
 </html>
+
+<%@ include file="footer.jsp" %>

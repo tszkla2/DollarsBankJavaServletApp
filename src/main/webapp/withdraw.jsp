@@ -52,5 +52,24 @@
 			</div>
 		</nav>
 		
+<div class="container">
+<% String formType = "withdraw"; %>
+	
+<form action="<%= formType %>" method="get">
+	  <div class="form-group">
+	    
+	    <label for="withdraw">How much money would you like to withdraw?</label>
+	    <input type="text" class="form-control" id="withdraw" name="withdraw" required>
+	    
+	  </div>
+	  
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+</div>
+		
+		
   </body>
 </html>
+
+<%@ include file="footer.jsp" %>

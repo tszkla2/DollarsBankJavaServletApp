@@ -12,7 +12,7 @@ public class SavingsAccount extends Account {
 	private String password;
 	private LocalDateTime ldt = LocalDateTime.now();
 	
-	private List<String> transactionHistory = new ArrayList<String>();
+	public List<String> transactionHistory = new ArrayList<String>();
 	
 	public SavingsAccount() {
 		super();

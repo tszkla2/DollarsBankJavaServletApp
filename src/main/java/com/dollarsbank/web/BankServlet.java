@@ -10,12 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 import java.util.List;
-import java.util.Scanner;
 
-import com.cognixia.jump.model.Librarian;
-import com.cognixia.jump.model.Patron;
 import com.dollarsbank.model.Customer;
 
 @WebServlet("/")
@@ -28,10 +24,11 @@ public class BankServlet extends HttpServlet{
 	//Adds initial accounts to the system
 	static {
 		list.add(new Customer("Tom", "123 Drive", "123-456-7890", "001", "password", 500));
-		list.add(new Customer("Bill", "456 Drive", "987-654-3210", "002", "password", 100));
+//		list.add(new Customer("Bill", "456 Drive", "987-654-3210", "002", "password", 100));
 	}
+	
+	public int index;
 		
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 	            throws ServletException, IOException {
 
@@ -42,33 +39,30 @@ public class BankServlet extends HttpServlet{
 		String action = request.getServletPath();
 
         switch (action) {
-        	case "/createAccount":
-	            createAccount(request, response);
-	            break;
+//        	case "/createAccount":
+//	            createAccount(request, response);
+//	            break;
 	        case "/login":
 	        	goToLoginPage(request, response);
-	            break;
-	        case "/loggedIn":
-	        	goToLogggedInPage(request, response);
 	            break;
             case "/trylogin":
                 handleLogin(request, response);
                 break;
-            case "/listHistory":
-                listHIstory(request, response);
-                break;
-            case "/deposit":
-                deposit(request, response);
-                break;
-            case "/withdraw":
-                withdraw(request, response);
-                break;
-            case "/transfer":
-                transfer(request, response);
-                break;
-            case "/information":
-                information(request, response);
-                break;
+//            case "/listHistory":
+//                listHIstory(request, response);
+//                break;
+//            case "/deposit":
+//                deposit(request, response);
+//                break;
+//            case "/withdraw":
+//                withdraw(request, response);
+//                break;
+//            case "/transfer":
+//                transfer(request, response);
+//                break;
+//            case "/information":
+//                information(request, response);
+//                break;
                 
             case "/logout":
             	response.sendRedirect("/DollarsBankJavaServletApp");
@@ -80,17 +74,15 @@ public class BankServlet extends HttpServlet{
 	}
 	
 	
+//	private void createAccount(HttpServletRequest request, HttpServletResponse response) 
+//			throws ServletException, IOException {
+//		
+//		RequestDispatcher dispatcher = request.getRequestDispatcher("createAccount.jsp");
+//		
+//		dispatcher.forward(request, response);
+//	}
 	
-	
-	private void createAccount(HttpServletRequest request, HttpServletResponse response) 
-			throws ServletException, IOException {
-		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("createAccount.jsp");
-		
-		dispatcher.forward(request, response);
-	}
-	
-	private void goToLoginPage(HttpServletRequest request, HttpServletResponse response) 
+	public void goToLoginPage(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
@@ -98,20 +90,28 @@ public class BankServlet extends HttpServlet{
 		dispatcher.forward(request, response);
 	}	 
 	
-	 private void handleLogin(HttpServletRequest request, HttpServletResponse response) 
+	 public void handleLogin(HttpServletRequest request, HttpServletResponse response) 
 				throws ServletException, IOException {
 		
-		String accountID = "";
-		String password = "";
+		String accountID = request.getParameter("accountID");
+		String password = request.getParameter("password");
 		
 		for (Customer customer : list) {
 				if (customer.getAccountID().equals(accountID) && customer.getPassword().equals(password)) {
-					int i = list.indexOf(customer);
-					welcomeCustomer(i);
+					index = list.indexOf(customer);
+					request.setAttribute("customer", customer);
+					RequestDispatcher dispatcher = request.getRequestDispatcher("logged_in.jsp");
+					dispatcher.forward(request, response);
 					break;
-						
 				}
-
+				else {
+					RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
+					dispatcher.forward(request, response);
+				}
+				
 			}
 	 }
+	 
+	 
+	 
 }

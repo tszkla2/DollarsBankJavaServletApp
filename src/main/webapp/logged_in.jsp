@@ -2,7 +2,8 @@
 
 <div class="container">
 	
-	<h1>Welcome to TOM's BANK!</h1>
+	<h1>Welcome ${customer.name}</</h1>
+	<h1>LOGGED IN!!!</h1>
 	
 </div>
 

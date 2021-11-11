@@ -17,7 +17,7 @@
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<div class="container-fluid">
 			
- 				<a class="navbar-brand" href="<%= request.getContextPath() %>/">Home</a>
+ 				<a class="navbar-brand" href="<%= request.getContextPath() %>/logout">/Logout</a>
 		
 				<button class="navbar-toggler" type="button"
 					data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
@@ -30,7 +30,21 @@
 					<div class="navbar-nav">
 					
 						<a class="nav-link" 
-						   href="<%= request.getContextPath() %>/login">Login</a> 
+						   href="<%= request.getContextPath() %>/deposit">Deposit</a> 
+						   
+						<a class="nav-link" 
+						   href="<%= request.getContextPath() %>/withdraw">Withdraw</a>
+						   
+						<a class="nav-link" 
+						   href="<%= request.getContextPath() %>/transfer">Transfer</a>
+						   
+						<a class="nav-link" 
+						   href="<%= request.getContextPath() %>/listHistory">History</a>
+						   
+						<a class="nav-link" 
+						   href="<%= request.getContextPath() %>/information">Information</a>
+						   
+						    
 					
 					</div>
 				</div>

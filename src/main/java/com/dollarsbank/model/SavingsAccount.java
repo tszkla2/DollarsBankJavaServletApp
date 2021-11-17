@@ -3,6 +3,7 @@ package com.dollarsbank.model;
 import java.util.ArrayList;
 import java.util.List;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 //Model Class for the Savings Account
 public class SavingsAccount extends Account {
@@ -10,7 +11,7 @@ public class SavingsAccount extends Account {
 	private double balance;
 	private String accountID;
 	private String password;
-	private LocalDateTime ldt = LocalDateTime.now();
+	private LocalDateTime now = LocalDateTime.now(); 
 	
 	public List<String> transactionHistory = new ArrayList<String>();
 	
@@ -46,20 +47,26 @@ public class SavingsAccount extends Account {
 	//Withdraw functionality that displays withdraw and time as well as adds it to the history
 	@Override
 	public void withdraw(double money) {
-		ldt = LocalDateTime.now();
+		now = LocalDateTime.now();
+		DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"); 
+		String ldt = now.format(format); 
+		
 		balance = balance - money;
 		
-		addHistory("Withdrawn " + money + " from account ["+ accountID +"]\n" + "Balance - " + balance + " as of " + ldt + "\n ");
+		addHistory("Withdrawn $" + money + " from account ["+ accountID +"]. " + "Balance - $" + balance + " as of " + ldt);
 		System.out.println();
 	}
 
 	//Deposit functionality that displays deposit and time as well as adds it to the history
 	@Override
 	public void deposit(double money) {
-		ldt = LocalDateTime.now();
+		now = LocalDateTime.now();
+		DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"); 
+		String ldt = now.format(format); 
+		
 		balance = balance + money;
 		
-		addHistory("Deposited " + money + " into account ["+ accountID +"]\n" + "Balance - " + balance + " as of " + ldt + "\n ");
+		addHistory("Deposited $" + money + " into account ["+ accountID +"]. " + "Balance - $" + balance + " as of " + ldt);
 		System.out.println();
 	}
 
@@ -86,7 +93,7 @@ public class SavingsAccount extends Account {
 				h.add(string);
 				continue;
 //			}
-//			System.out.println(string);
+
 		}
 		return h;
 	}
@@ -94,10 +101,13 @@ public class SavingsAccount extends Account {
 	//Transfer functionality that displays transfer and time as well as adds it to the history
 	@Override
 	public void transfer(double money, String transferID) {
-		ldt = LocalDateTime.now();
+		now = LocalDateTime.now();
+		DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"); 
+		String ldt = now.format(format); 
+		
 		balance = balance - money;
 		
-		addHistory("Transferred " + money + " into account ["+ transferID +"]\n" + "Balance - " + balance + " as of " + ldt + "\n ");
+		addHistory("Transferred $" + money + " into account ["+ transferID +"]. " + "Balance - $" + balance + " as of " + ldt);
 		System.out.println();
 	}
 

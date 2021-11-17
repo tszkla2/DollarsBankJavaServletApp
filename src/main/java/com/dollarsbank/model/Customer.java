@@ -1,6 +1,7 @@
 package com.dollarsbank.model;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 //Model Class for the Customer
 public class Customer extends SavingsAccount {
@@ -8,7 +9,7 @@ public class Customer extends SavingsAccount {
 	private String name;
 	private String address;
 	private String phoneNumber;
-	private LocalDateTime ldt = LocalDateTime.now();
+	private LocalDateTime now = LocalDateTime.now();
 	
 	public Customer(String name, String address, String phoneNumber, String accountID, String password, double balance) {
 		super();
@@ -20,7 +21,11 @@ public class Customer extends SavingsAccount {
 		setBalance(balance);
 		
 		//Adds initial balance amount as well as time to the customer account and adds it to the history
-		addHistory("Initial balance in account ["+ accountID +"]\n" + "Balance - " + balance + " as of " + ldt + "\n");
+		now = LocalDateTime.now();
+		DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"); 
+		String ldt = now.format(format); 
+		
+		addHistory("Initial balance in account ["+ accountID +"]. " + "Balance - $" + balance + " as of " + ldt);
 		System.out.println();
 	}
 	

@@ -2,6 +2,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@page import="com.dollarsbank.model.Customer"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <html lang="en">
   <head>
@@ -55,9 +56,11 @@
 <div class="container">
 	
 	<h1>History</h1>
-    	<ol>
-  			<li>${transactionHistory}</li>
-		</ol> 
+		<c:forEach var="history" items="${transactionHistory}" >
+    		<ul>
+  				<li><c:out value="${history}" /></li>
+			</ul> 
+		</c:forEach>
 </div>
 		
 		

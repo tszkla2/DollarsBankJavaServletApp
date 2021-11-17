@@ -76,25 +76,25 @@ public class SavingsAccount extends Account {
 		
 	}
 
-	//Add actions to the history and only displays the 5 most recent
+	//Add transactions to the history and only displays the 5 most recent
 	@Override
 	public ArrayList<String> displayHistory() {
 		ArrayList<String> h = new ArrayList<String>();
 		int size = transactionHistory.size();
 		int skip = 0;
 		
-		if(size >= 5) {
-			skip = size - 5;
+		for (String string : transactionHistory) {
+			h.add(string);
 		}
 		
-		for (String string : transactionHistory) {
-//			if(skip > 0) {
-//				skip = skip - 1;
-				h.add(string);
-				continue;
-//			}
-
-		}
+		if(size > 5) {
+			skip = size - 5;
+			
+				while(skip > 0) {
+					h.remove(skip - 1);
+					skip--;
+				}
+			}
 		return h;
 	}
 

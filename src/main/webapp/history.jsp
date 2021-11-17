@@ -55,10 +55,9 @@
 <div class="container">
 	
 	<h1>History</h1>
-		<c:forEach items="${transactionHistory}" var="item">
-    		${item}
-    		<br>
-		</c:forEach>
+    	<ol>
+  			<li>${transactionHistory}</li>
+		</ol> 
 </div>
 		
 		

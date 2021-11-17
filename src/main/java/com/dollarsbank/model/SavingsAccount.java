@@ -81,11 +81,12 @@ public class SavingsAccount extends Account {
 		}
 		
 		for (String string : transactionHistory) {
-			if(skip > 0) {
-				skip = skip - 1;
+//			if(skip > 0) {
+//				skip = skip - 1;
 				h.add(string);
 				continue;
-			}
+//			}
+//			System.out.println(string);
 		}
 		return h;
 	}

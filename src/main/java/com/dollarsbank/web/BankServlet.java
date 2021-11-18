@@ -14,6 +14,8 @@ import java.util.List;
 
 import com.dollarsbank.model.Customer;
 
+//Run this file on a server to run the program. Navigate to http://localhost:8080/DollarsBankJavaServletApp to view the home page
+
 @WebServlet("/")
 public class BankServlet extends HttpServlet{
 

@@ -38,7 +38,8 @@ public class BankServlet extends HttpServlet{
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String action = request.getServletPath();
-
+		
+		//Used to navigate through all the webpages
         switch (action) {
 	        case "/login":
 	        	goToLoginPage(request, response);
@@ -79,6 +80,7 @@ public class BankServlet extends HttpServlet{
 			}
 	}
 	
+	//Navigates to login page
 	public void goToLoginPage(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		
@@ -87,6 +89,7 @@ public class BankServlet extends HttpServlet{
 		dispatcher.forward(request, response);
 	}	 
 	
+	//Logging in logic
 	 public void handleLogin(HttpServletRequest request, HttpServletResponse response) 
 				throws ServletException, IOException {
 		
@@ -104,6 +107,7 @@ public class BankServlet extends HttpServlet{
 			}
 	 }
 	 
+	 //Depositing logic
 	 public void handleDeposit(HttpServletRequest request, HttpServletResponse response) 
 				throws ServletException, IOException {
 			
@@ -119,6 +123,7 @@ public class BankServlet extends HttpServlet{
 			}
 	 }
 	 
+	 //Withdrawing logic
 	 public void handleWithdraw(HttpServletRequest request, HttpServletResponse response) 
 				throws ServletException, IOException {
 			
@@ -134,6 +139,7 @@ public class BankServlet extends HttpServlet{
 			}
 	 }
 	 
+	 //Transfering logic
 	 public void handleTransfer(HttpServletRequest request, HttpServletResponse response) 
 				throws ServletException, IOException {
 			
@@ -161,6 +167,7 @@ public class BankServlet extends HttpServlet{
 
 	 }
 	 
+	 //Displays account information
 	 public void information(HttpServletRequest request, HttpServletResponse response) 
 				throws ServletException, IOException {
 		 
@@ -169,7 +176,8 @@ public class BankServlet extends HttpServlet{
 			
 		dispatcher.forward(request, response);
 		}	 
-
+	 
+	 //Navigates to deposit page
 	 public void goToDeposit(HttpServletRequest request, HttpServletResponse response) 
 				throws ServletException, IOException {
 			
@@ -178,6 +186,7 @@ public class BankServlet extends HttpServlet{
 			dispatcher.forward(request, response);
 	 }
 	 
+	 //Navigates to withdraw page
 	 public void goToWithdraw(HttpServletRequest request, HttpServletResponse response) 
 				throws ServletException, IOException {
 			
@@ -186,6 +195,7 @@ public class BankServlet extends HttpServlet{
 			dispatcher.forward(request, response);
 	 }
 	 
+	 //Navigates to transfer page
 	 public void goToTransfer(HttpServletRequest request, HttpServletResponse response) 
 				throws ServletException, IOException {
 			
@@ -194,6 +204,7 @@ public class BankServlet extends HttpServlet{
 			dispatcher.forward(request, response);
 	 }
 	 
+	 //Navigates to history page
 	 public void goToHistory(HttpServletRequest request, HttpServletResponse response) 
 				throws ServletException, IOException {
 		 	
